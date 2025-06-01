@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil @jeanqmx</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      color: white;
+    }
+
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0.6;
+      z-index: -2;
+    }
+
+    #video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(2px);
+    }
+
+    #intro {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      animation: fadeIn 2s ease;
+    }
+
+    #intro button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background-color: #c77dff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 12px #c77dff;
+      transition: all 0.3s ease;
+    }
+
+    #intro button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #a259ff, #f3a0ff);
+      box-shadow: 0 0 20px #e3b4ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeZoomIn 1s ease;
+    }
+
+    #main-content2 {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      animation: fadeZoomIn 1s ease;
+    }
+
+    .fade-in {
+      animation: fadeZoomIn 1s ease;
+    }
+
+    @keyframes fadeZoomIn {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .profile-box {
+      background-color: rgba(0, 0, 0, 0.65);
+      border: 2px solid #c77dff;
+      border-radius: 25px;
+      padding: 20px 40px;
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+      backdrop-filter: blur(5px);
+      transition: all 0.5s ease-in-out;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-box2 {
+      background-color: rgba(0, 0, 0, 0.65);
+      border: 2px solid #c77dff;
+      border-radius: 25px;
+      padding: 20px 40px;
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+      backdrop-filter: blur(5px);
+      transition: all 0.5s ease-in-out;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+
+    .profile-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px rgba(199, 125, 255, 0.9), 0 0 60px rgba(199, 125, 255, 0.6);
+      border-color: #e3b4ff;
+    }
+
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      border: 2px solid #fff;
+      position: relative;
+    }
+
+    .profile-pic::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,125,255,0.4) 0%, transparent 70%);
+      animation: auraPulse 3s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #e0e0e0;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .network-icons {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .network-icons img {
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .network-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .glow-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1f1f2e;
+      border-radius: 50px;
+      padding: 14px 22px 14px 55px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .glow-button:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: linear-gradient(135deg, #7b2cbf, #c77dff);
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+    }
+
+    .glow-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 60%);
+      animation: pulse 3s infinite;
+      z-index: 0;
+    }
+
+    .glow-button .content {
+      z-index: 1;
+    }
+
+    .glow-button img {
+      position: absolute;
+      left: 20px;
+      width: 26px;
+      height: 26px;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .view-counter {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #c77dff;
+      border-radius: 30px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      z-index: 100;
+    }
+
+    .view-counter img {
+      width: 18px;
+      height: 18px;
+      filter: brightness(100%) drop-shadow(0 0 3px #c77dff);
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay loop muted id="background-video">
+    <source src="fondo.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <audio id="bg-music" loop>
+    <source id="audio-source" src="" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <div id="video-overlay"></div>
+
+  <div id="intro">
+    <div>CERO GORDAS</div>
+  <button onclick="startPage()">LA K</button>
+    <a href="cordoba.html"><button>LA W</button></a>
+    <a href="lylies.html"><button>LA L</button></a>
+    </div>
+
+  <div id="main-content" class="fade-in">
+    <div class="profile-box">
+      <div class="profile-pic">
+        <img src="https://media.discordapp.net/attachments/1375585580448092272/1376713835528061089/Picsart_24-11-18_21-54-26-669.jpg?ex=6837a5ac&is=6836542c&hm=e6f43e860eef31f268a1aaa325924cbaf2a0e77c657145f5a897ee833f94d65e&=&format=webp&width=427&height=570" alt="Perfil" />
+      </div>
+      <h1>@Jeanqmx</h1>
+      <p>LA FOKIN KBRA DE TODOS LOS TIEMPOS</p>
+      <div class="network-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" />
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kick.svg" alt="Kick" style="width:34px; height:34px; filter: invert(41%) sepia(99%) saturate(2526%) hue-rotate(79deg) brightness(92%) contrast(88%);" />
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TikTok" />
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+      </div>
+      <div class="button-list">
+        <a href="https://discord.gg/EMxzSzXmt6" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" />
+          <div class="content">Discord</div>
+        </a>
+        <a href="https://kick.com/jeanqmx" class="glow-button">
+          <img src="https://cdn.simpleicons.org/kick/00C805" alt="Kick" style="width:26px; height:26px;" />
+          <div class="content">Kick</div>
+        </a>
+        <a href="https://www.tiktok.com/@jeanqmx" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TikTok" />
+          <div class="content">TikTok</div>
+        </a>
+        <a href="https://www.youtube.com/@jeanqmx" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
+          <div class="content">YouTube</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-counter">
+    <img src="https://cdn-icons-png.flaticon.com/512/709/709612.png" alt="Vistas" />
+    <span id="viewCount">1</span>
+  </div>
+
+  <script>
+    const mediaList = [
+      {
+        audio: "luar.mp3",
+        video: "video.mp4"
+      },
+      {
+        audio: "hp.mp3",
+        video: "hpvideo.mp4"
+      },
+      {
+        audio: "mame.mp3",
+        video: "mamevideo.mp4"
+      },
+      {
+        audio: "polos.mp3",
+        video: "polosvideo.mp4"
+      }
+    ];
+
+    function startPage() {
+      const randomIndex = Math.floor(Math.random() * mediaList.length);
+      const selectedMedia = mediaList[randomIndex];
+
+      const videoElement = document.getElementById("background-video");
+      videoElement.src = selectedMedia.video;
+      videoElement.load();
+      videoElement.play();
+
+      const audioSource = document.getElementById("audio-source");
+      audioSource.src = selectedMedia.audio;
+      const audioElement = document.getElementById("bg-music");
+      audioElement.load();
+      audioElement.play();
+
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("main-content").style.display = "flex";
+    }
+  </script>
+</body>
+</html>
