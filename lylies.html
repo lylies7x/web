@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil @jeanqmx</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      color: white;
+    }
+
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0.6;
+      z-index: -2;
+    }
+
+    #video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(2px);
+    }
+
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeZoomIn 1s ease;
+    }
+
+    @keyframes fadeZoomIn {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .profile-box {
+      background-color: rgba(0, 0, 0, 0.65);
+      border: 2px solid #c77dff;
+      border-radius: 25px;
+      padding: 20px 40px;
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+      backdrop-filter: blur(5px);
+      transition: all 0.5s ease-in-out;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px rgba(199, 125, 255, 0.9), 0 0 60px rgba(199, 125, 255, 0.6);
+      border-color: #e3b4ff;
+    }
+
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      border: 2px solid #fff;
+      position: relative;
+    }
+
+    .profile-pic::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,125,255,0.4) 0%, transparent 70%);
+      animation: auraPulse 3s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #e0e0e0;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .network-icons {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .network-icons img {
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .network-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    .button-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .glow-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1f1f2e;
+      border-radius: 50px;
+      padding: 14px 22px 14px 55px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .glow-button:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: linear-gradient(135deg, #7b2cbf, #c77dff);
+      box-shadow: 0 0 25px rgba(199, 125, 255, 0.6);
+    }
+
+    .glow-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 60%);
+      animation: pulse 3s infinite;
+      z-index: 0;
+    }
+
+    .glow-button .content {
+      z-index: 1;
+    }
+
+    .glow-button img {
+      position: absolute;
+      left: 20px;
+      width: 26px;
+      height: 26px;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .view-counter {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #c77dff;
+      border-radius: 30px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      z-index: 100;
+    }
+
+    .view-counter img {
+      width: 18px;
+      height: 18px;
+      filter: brightness(100%) drop-shadow(0 0 3px #c77dff);
+    }
+  </style>
+</head>
+<body>
+
+  <video id="background-video" muted loop playsinline></video>
+
+  <audio id="bg-music" loop>
+    <source id="audio-source" src="" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <div id="video-overlay"></div>
+
+  <div id="main-content" class="fade-in">
+    <div class="profile-box">
+      <div class="profile-pic">
+        <img src="https://media.discordapp.net/attachments/1375585580448092272/1377754388797587537/b5d5dafab06b153822ede295e1077d82.png?ex=683a1d43&is=6838cbc3&hm=47ed89855fa651b4832b9f1d3c818e74cc592fe17d429ef08655b649d32d3a1a&=&format=webp&quality=lossless" alt="Perfil" />
+      </div>
+      <h1>@Im Lylies</h1>
+     <p>🥀Software - Developer - Github</p>
+      <div class="network-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" />
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kick.svg" alt="Kick" style="width:34px;height:34px;"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Instagram" />
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Telegram" />
+      </div>
+
+      <div class="button-list">
+        <a href="https://discord.com/users/805822487581627197" target="_blank" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Logo" />
+          <span class="content">Discord</span>
+        </a>
+        <a href="https://kick.com/Jeanqmx" target="_blank" class="glow-button">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kick.svg" alt="Kick Logo" />
+          <span class="content">Kick</span>
+        </a>
+        <a href="https://instagram.com/jeanqmx" target="_blank" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Instagram Logo" />
+          <span class="content">Instagram</span>
+        </a>
+        <a href="https://t.me/jeanqmx" target="_blank" class="glow-button">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="Telegram Logo" />
+          <span class="content">Telegram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="view-counter" title="Visitas">
+    <img src="https://cdn-icons-png.flaticon.com/512/709/709722.png" alt="Ojo" />
+    <span id="visit-count">0</span>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const mediaList = [
+        { audio: "ovi.mp3", video: "ovid.mp4" },
+        { audio: "lylies1.mp3", video: "lylies1.mp4" },
+        { audio: "lylies2.mp3", video: "lylies2.mp4" },
+        { audio: "polos.mp3", video: "polosvideo.mp4" }
+      ];
+
+      function startPage() {
+        const randomIndex = Math.floor(Math.random() * mediaList.length);
+        const selectedMedia = mediaList[randomIndex];
+
+        const videoElement = document.getElementById("background-video");
+        videoElement.src = selectedMedia.video;
+        videoElement.load();
+        videoElement.play();
+
+        const audioSource = document.getElementById("audio-source");
+        audioSource.src = selectedMedia.audio;
+        const audioElement = document.getElementById("bg-music");
+        audioElement.load();
+
+        // Intenta reproducir el audio y video con manejo básico de errores
+        videoElement.play().catch(e => console.log("Video play error:", e));
+        audioElement.play().catch(e => {
+          console.log("Audio play error:", e);
+          // Aquí podrías mostrar un botón para que usuario haga click y active audio
+        });
+      }
+
+      startPage();
+    });
+  </script>
+
+</body>
+</html>
